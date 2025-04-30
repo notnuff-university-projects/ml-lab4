@@ -2,12 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QLineEdit>
+#include <QSlider>
 #include <QLabel>
-#include <QPushButton>
-#include "fuzzy_logic.h"
+#include "fuzzycontroller.h"
 
-class MainWindow : public QMainWindow {
+class MainWindow : public QMainWindow
+{
     Q_OBJECT
 
 public:
@@ -15,13 +15,15 @@ public:
     ~MainWindow();
 
 private slots:
-    void calculatePower();
+    void updateHeatPower();
 
 private:
-    QLineEdit *tempInput;
-    QLineEdit *humInput;
-    QLabel *resultLabel;
-    FuzzyLogic *fuzzyLogic;
+    FuzzyController *controller;
+    QSlider *currentTempSlider;
+    QSlider *desiredTempSlider;
+    QLabel *currentTempLabel;
+    QLabel *desiredTempLabel;
+    QLabel *heatPowerLabel;
 };
 
 #endif // MAINWINDOW_H 
